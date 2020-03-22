@@ -8,8 +8,8 @@
 #include <string.h> /* gets, strcmp */
 #include <stdlib.h> /* system */
 
-#define USUARIO "prueba"
-#define CLAVE "prueba"
+#define USUARIO "prueba1"
+#define CLAVE "prueba1"
 
 #define LONGITUD 80
 
