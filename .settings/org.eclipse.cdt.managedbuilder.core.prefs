@@ -5,7 +5,17 @@ environment/buildEnvironmentInclude/org.eclipse.linuxtools.cdt.autotools.core.co
 environment/buildEnvironmentInclude/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.1010262746/C_INCLUDE_PATH/operation=remove
 environment/buildEnvironmentInclude/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.1010262746/append=true
 environment/buildEnvironmentInclude/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.1010262746/appendContributed=true
+environment/buildEnvironmentInclude/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.781992795/CPATH/delimiter=;
+environment/buildEnvironmentInclude/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.781992795/CPATH/operation=remove
+environment/buildEnvironmentInclude/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.781992795/C_INCLUDE_PATH/delimiter=;
+environment/buildEnvironmentInclude/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.781992795/C_INCLUDE_PATH/operation=remove
+environment/buildEnvironmentInclude/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.781992795/append=true
+environment/buildEnvironmentInclude/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.781992795/appendContributed=true
 environment/buildEnvironmentLibrary/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.1010262746/LIBRARY_PATH/delimiter=;
 environment/buildEnvironmentLibrary/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.1010262746/LIBRARY_PATH/operation=remove
 environment/buildEnvironmentLibrary/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.1010262746/append=true
 environment/buildEnvironmentLibrary/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.1010262746/appendContributed=true
+environment/buildEnvironmentLibrary/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.781992795/LIBRARY_PATH/delimiter=;
+environment/buildEnvironmentLibrary/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.781992795/LIBRARY_PATH/operation=remove
+environment/buildEnvironmentLibrary/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.781992795/append=true
+environment/buildEnvironmentLibrary/org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.781992795/appendContributed=true
