@@ -2,7 +2,7 @@
  * login.c
  *
  *  Created on: 22 mar. 2020
- *      Author: ikergallar
+ *      Author: ikergallar, misaga019
  */
 #include<stdio.h>
 #include <ctype.h>
