@@ -28,7 +28,7 @@ all: SearchTel
 SearchTel: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MinGW C Linker'
-	gcc  -o "SearchTel" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc -static -o "SearchTel" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
