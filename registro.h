@@ -15,7 +15,6 @@ typedef struct registro{
 }REGISTRO;
 
 void registrarUsuario();
-void eliminarUsuario(REGISTRO r);
 
 
 #endif /* REGISTRO_H_ */
