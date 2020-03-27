@@ -28,7 +28,7 @@ void registrarUsuario(){
 	gets(r.contra);
 	fwrite(&r, sizeof(r), 1, pf);
 	printf("\n!!!REGISTRO REALIZADO CON EXITO!!!");
-    	printf("\nPresiona una tecl para continuar...");
+    	printf("\nPresiona una tecla para continuar...");
      	getch();
         fclose(pf);
 	}
