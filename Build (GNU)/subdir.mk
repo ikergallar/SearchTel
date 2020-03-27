@@ -4,13 +4,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../login.c 
+../login.c \
+../registro.c 
 
 OBJS += \
-./login.o 
+./login.o \
+./registro.o 
 
 C_DEPS += \
-./login.d 
+./login.d \
+./registro.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

@@ -1,1 +1,3 @@
-login.o: ../login.c
+login.o: ../login.c ../registro.h
+
+../registro.h:

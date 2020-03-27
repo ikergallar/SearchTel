@@ -1,20 +1,16 @@
-/*
- * login.c
- *
- *  Created on: 22 mar. 2020
- *      Author: ikergallar, misaga019
- */
 #include <stdio.h>
-#include <string.h> /* gets, strcmp */
-#include <stdlib.h> /* system */
+#include <string.h>
+#include "registro.h"
 
-#define USUARIO "c"
-#define CLAVE "java"
 
-#define LONGITUD 80
 
 int main() {
+
+	registrarUsuario();
+
+	/*
     char usuario[LONGITUD + 1];
+
     char clave[LONGITUD + 1];
     int intento = 0;
     int ingresa = 0;
@@ -68,4 +64,6 @@ int main() {
     }
 
     return 0;
+    */
+	return 0;
 }
