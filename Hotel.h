@@ -13,19 +13,19 @@
 #include <stdlib.h>
 #include "Usuario.h"
 
-void roomDetail(char* hotelname);
+void roomDetail(char* hotelnombre);
 void hotel();
 
 typedef struct hotel {
-    char* name;
+    char* nombre;
     struct hotel * next;
 }Hotel;
 
-typedef  struct roomtype{
-    char *name;
+typedef  struct tipo_habitacion{
+    char *nombre;
     int status;
-    struct roomtype *next;
-}Roomtype;
+    struct tipo_habitacion *next;
+}tipo_habitacion;
 
 typedef  struct room{
     char *room_num;
@@ -34,12 +34,12 @@ typedef  struct room{
 }Room;
 
 
-void makeHotelList(Hotel **lst, char *hotelname){
-    Hotel* newHotel = (Hotel*)malloc(sizeof(Hotel)); ;
-    newHotel->name = hotelname;
-    newHotel->next = NULL;
+void makeHotelList(Hotel **lst, char *hotelnombre){
+    Hotel* nuevo_Hotel = (Hotel*)malloc(sizeof(Hotel)); ;
+    nuevo_Hotel->nombre = hotelnombre;
+    nuevo_Hotel->next = NULL;
     if(*lst == NULL) {
-        *lst = newHotel;
+        *lst = nuevo_Hotel;
     }
     else{
         Hotel* buffer = *lst;
@@ -47,39 +47,39 @@ void makeHotelList(Hotel **lst, char *hotelname){
         while(buffer->next != NULL) {
             buffer = buffer->next;
         }
-        buffer->next = newHotel;
+        buffer->next = nuevo_Hotel;
         *lst = head;
     }
 }
 
-void makeRoomTypeList(Roomtype **lst, char *roomname, int s){
-    Roomtype* newRoom = (Roomtype*)malloc(sizeof(Roomtype)); ;
-    newRoom->name = roomname;
-    newRoom->next = NULL;
-    newRoom->status = s;
+void maketipo_habitacionList(tipo_habitacion **lst, char *roomnombre, int s){
+    tipo_habitacion* nueva_Habitacion = (tipo_habitacion*)malloc(sizeof(tipo_habitacion)); ;
+    nueva_Habitacion->nombre = roomnombre;
+    nueva_Habitacion->next = NULL;
+    nueva_Habitacion->status = s;
 
     if(*lst == NULL) {
-        *lst = newRoom;
+        *lst = nueva_Habitacion;
     }
     else{
-        Roomtype* buffer = *lst;
-        Roomtype* head = buffer;
+        tipo_habitacion* buffer = *lst;
+        tipo_habitacion* head = buffer;
         while(buffer->next != NULL) {
             buffer = buffer->next;
         }
-        buffer->next = newRoom;
+        buffer->next = nueva_Habitacion;
         *lst = head;
     }
 }
 
 void makeRoomList(Room **lst, char *room_num, int s){
-    Room* newRoom = (Room*)malloc(sizeof(Room)); ;
-    newRoom->room_num = room_num;
-    newRoom->next = NULL;
-    newRoom->status = s;
+    Room* nueva_Habitacion = (Room*)malloc(sizeof(Room)); ;
+    nueva_Habitacion->room_num = room_num;
+    nueva_Habitacion->next = NULL;
+    nueva_Habitacion->status = s;
 
     if(*lst == NULL) {
-        *lst = newRoom;
+        *lst = nueva_Habitacion;
     }
     else{
         Room* buffer = *lst;
@@ -87,15 +87,15 @@ void makeRoomList(Room **lst, char *room_num, int s){
         while(buffer->next != NULL) {
             buffer = buffer->next;
         }
-        buffer->next = newRoom;
+        buffer->next = nueva_Habitacion;
         *lst = head;
     }
 }
 
-void write_file(Room* room,char* filename){
+void write_file(Room* room,char* filenombre){
     Room* sub = room;
     FILE *f;
-    f = fopen(strcat(filename,".txt"),"w");
+    f = fopen(strcat(filenombre,".txt"),"w");
 
     while (sub != NULL) {
         char* new_room = (char*)malloc(sizeof(sub->room_num));
@@ -114,7 +114,7 @@ void write_file(Room* room,char* filename){
     fclose(f);
 }
 
-void booking(char* all_room, char* hotelname){
+void booking(char* all_room, char* hotelnombre){
     FILE * all;
     all  = fopen(all_room,"r+");
     Room *room = NULL;
@@ -142,7 +142,7 @@ void booking(char* all_room, char* hotelname){
         scanf("%s", n);
         Room *sub = room;
         if(strcmp(n,"b")== 0){
-            char* hotel = hotelname;
+            char* hotel = hotelnombre;
             strtok(hotel,"_");
             strcat(hotel,".txt");
             roomDetail(hotel);
@@ -151,7 +151,7 @@ void booking(char* all_room, char* hotelname){
         while (sub != NULL) {
             if (strcmp(sub->room_num, n) == 0 && sub->status == 1) {
                 char cf;
-                printf("Are you sure to booking this room?(y to confirm)");
+                printf("¿Esta seguro de querer reservar esta habitacion?(y para confirmar)");
                 getchar();
                 scanf("%c",&cf);
                 if(cf == 'y'){
@@ -162,7 +162,7 @@ void booking(char* all_room, char* hotelname){
                 break;
             }
             else if (strcmp(sub->room_num, n) == 0 && sub->status == 0){
-                printf("This room is already booking\n");
+                printf("Esta habitacion ya esta reservada\n");
                 invalid = 0;
                 break;
             }
@@ -172,7 +172,7 @@ void booking(char* all_room, char* hotelname){
             sub = sub->next;
         }
         if(invalid == 1)
-            printf("Your select is invalid or not avalible\n");
+            printf("Tu seleccion es invalida o no esta disponible\n");
 
         invalid = 0;
 
@@ -184,27 +184,27 @@ void booking(char* all_room, char* hotelname){
     }
 }
 
-void checkStatus(char* room_name,int choice,Roomtype **r){
+void checkStatus(char* room_nombre,int choice,tipo_habitacion **r){
     FILE *room,*type;
     int status;
     char room_number[10],room_status[10];
 
-    room = fopen(room_name,"r");
-    char type_name[255];
+    room = fopen(room_nombre,"r");
+    char type_nombre[255];
     for(int i =0;i< choice;i++){
-        fgets(type_name, sizeof(type_name),room);
+        fgets(type_nombre, sizeof(type_nombre),room);
     }
-    strtok(type_name,"\n");
+    strtok(type_nombre,"\n");
 
-    type = fopen(type_name,"r");
+    type = fopen(type_nombre,"r");
     while (fscanf(type,"%s : %s",room_number,room_status)!= EOF){
         if(strcmp(room_status,"Full")!= 0){
             printf("\nStatus : Avalible\n");
             status = 1;
-            char* sub = malloc(sizeof(type_name));
-            strcpy(sub,type_name);
+            char* sub = malloc(sizeof(type_nombre));
+            strcpy(sub,type_nombre);
             sub = strtok(sub,"\n");
-            makeRoomTypeList(r, sub, status);
+            maketipo_habitacionList(r, sub, status);
             fclose(room);
             fclose(type);
             return;
@@ -212,22 +212,22 @@ void checkStatus(char* room_name,int choice,Roomtype **r){
     }
     printf("\nStatus : Full\n");
     status = 0;
-    makeRoomTypeList(r, type_name, status);
+    maketipo_habitacionList(r, type_nombre, status);
     fclose(room);
     fclose(type);
 }
 
 
-void roomDetail(char* hotelname){
+void roomDetail(char* hotelnombre){
     FILE *roomlst;
-    roomlst = fopen(hotelname,"r");
+    roomlst = fopen(hotelnombre,"r");
     if(roomlst == 0){
         return;
     }
-    Roomtype *roomLink = NULL;
+    tipo_habitacion *roomLink = NULL;
 
     char buffer[255];
-    char* n = strtok(hotelname,".");
+    char* n = strtok(hotelnombre,".");
     n = strcat(n,"_room.txt");
 
     int order = 1;
@@ -246,13 +246,13 @@ void roomDetail(char* hotelname){
 
     fclose(roomlst);
 
-    char* room_name;
+    char* room_nombre;
     char c[2];
     int room_status,command,check = 1;
 
     do {
-        Roomtype *select_room = roomLink;
-        printf("\nEnter the selected room type (or b to back): ");
+        tipo_habitacion *select_room = roomLink;
+        printf("\nIntroduce el tipo de habitacion (o b para volver ): ");
         scanf("%s", c);
         if(strcmp(c,"b")== 0){
             hotel();
@@ -260,23 +260,23 @@ void roomDetail(char* hotelname){
         }
         command = atoi(c);
         if(command < 0 || command > number || strlen(c)> 1){
-            printf("Enter invalid room type\n");
+            printf("Tipo de habitacion no disponible\n");
             continue;
         }
 
         for (int i = 0; i < command; i++) {
-            room_name = select_room->name;
+            room_nombre = select_room->nombre;
             room_status = select_room->status;
             select_room = select_room->next;
         }
         if (!room_status)
-            printf("Enter invalid type or type with Full status!!!\n");
+            printf("No disponible!!!\n");
         else
             check = 0;
 
     }while(check);
 
-    booking(room_name,hotelname);
+    booking(room_nombre,hotelnombre);
 
 }
 
@@ -286,8 +286,8 @@ void hotel() {
     Hotel *hotel = NULL;
     int len_hotel = 0;
 
-    printf("\n---------Hotel name---------\n");
-    hotelst = fopen("Hotelname.txt","r");
+    printf("\n---------Hotel nombre---------\n");
+    hotelst = fopen("Hotelnombre.txt","r");
     while (fgets(buffer, sizeof(buffer),hotelst)){
         printf("%d.%s",len_hotel+1,buffer);
         char* sub = malloc(sizeof(buffer));
@@ -303,27 +303,27 @@ void hotel() {
     int command;
     char c[1];
     Hotel* selecthotel = hotel;
-    char* hotelname;
+    char* hotelnombre;
     int check = 1;
 
     do{
-    printf("\nSelect Hotel(or b to back): ");
+    printf("\nElija Hotel(o b para volver ): ");
     scanf("%s",c);
     if(strcmp(c,"b")== 0) {
         return;
     }
     command = atoi(c);
-    if(command != 0 && command > len_hotel) printf("Invalid Select Hotel!!!");
+    if(command != 0 && command > len_hotel) printf("Hotel invalido!!!");
     else check = 0;
     }while (check);
 
     for(int i = 0;i<command ;i++){
-        hotelname = selecthotel->name;
+        hotelnombre = selecthotel->nombre;
         selecthotel = selecthotel->next;
     }
 
-    hotelname = strcat(hotelname,".txt");
-    roomDetail(hotelname);
+    hotelnombre = strcat(hotelnombre,".txt");
+    roomDetail(hotelnombre);
 
 }
 
