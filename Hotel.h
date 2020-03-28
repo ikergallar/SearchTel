@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "User.h"
+#include "Usuario.h"
 
 void roomDetail(char* hotelname);
 void hotel();
