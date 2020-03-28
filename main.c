@@ -5,7 +5,7 @@
 #include <string.h>
 #include "Hotel.h"
 #include "Admin.h"
-#include "User.h"
+#include "Usuario.h"
 #include "registro.h"
 
 void home(){
