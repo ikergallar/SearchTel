@@ -4,15 +4,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../login.c \
+../main.c \
 ../registro.c 
 
 OBJS += \
-./login.o \
+./main.o \
 ./registro.o 
 
 C_DEPS += \
-./login.d \
+./main.d \
 ./registro.d 
 
 
