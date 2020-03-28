@@ -16,6 +16,7 @@
 #include "Hotel.h"
 
 
+
 void seek_to_next_line( void )
 {
     int c;

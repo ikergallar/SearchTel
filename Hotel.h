@@ -297,6 +297,7 @@ void hotel() {
         len_hotel++;
     }
 
+
     fclose(hotelst);
 
     int command;
