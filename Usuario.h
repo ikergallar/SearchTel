@@ -13,29 +13,29 @@
 #include <string.h>
 #include <stdlib.h>
 
-void information(char room_number[10],char room_type[50]){
-    char name[128],number[128],date[128];
+void information(char habitacion_numero[10],char tipo_habitacion[50]){
+    char nombre[128],numero[128],fecha[128];
 
-    printf("Enter your name:");
-    scanf("%s",name);
+    printf("Introduce tu nombre:");
+    scanf("%s",nombre);
 
-    printf("Enter your phone number:");
-    scanf("%s",number);
+    printf("Introduce tu numero de telefono:");
+    scanf("%s",numero);
 
-    printf("Enter your booking date:");
-    scanf("%s",date);
+    printf("Introduce la fecha de reserva");
+    scanf("%s",fecha);
 
 
     char inf[255] =  "";
-    strcat(inf,name);
+    strcat(inf,nombre);
     strcat(inf," : ");
-    strcat(inf,number);
+    strcat(inf,numero);
     strcat(inf," : ");
-    strcat(inf,date);
+    strcat(inf,fecha);
     strcat(inf," : ");
-    strcat(inf,room_number);
+    strcat(inf,habitacion_numero);
     strcat(inf," : ");
-    strcat(inf,strtok(room_type,"."));
+    strcat(inf,strtok(tipo_habitacion,"."));
     strcat(inf,"\n");
 
 
@@ -48,47 +48,47 @@ void information(char room_number[10],char room_type[50]){
 void search(int version){
     FILE *file;
     file  = fopen("Customer.txt","r");
-    char name[128],number[128],date[128],input[128],room[128],type[128];
+    char nombre[128],numero[128],fecha[128],input[128],habitacion[128],tipo[128];
     char c;
 
     do {
         if (version == 0) {
-            printf("Enter name to search:");
+            printf("Introduce un nombre para buscar:");
             scanf("%s", input);
         } else if (version == 1) {
-            printf("Enter phone number to search:");
+            printf("Introduce un telefono para buscar");
             scanf("%s", input);
         }
 
         int check = 0;
-        while (fscanf(file, "%s : %s : %s : %s : %[^\n]", name, number, date, room, type) != EOF) {
+        while (fscanf(file, "%s : %s : %s : %s : %[^\n]", nombre, numero, fecha, habitacion, tipo) != EOF) {
             if (version == 0) {
-                if (strcmp(name, input) == 0) {
-                    printf("%s : %s : %s : %s : %s\n", name, number, date, room, type);
+                if (strcmp(nombre, input) == 0) {
+                    printf("%s : %s : %s : %s : %s\n", nombre, numero, fecha, habitacion, tipo);
                     check = 1;
                 }
             } else if (version == 1) {
-                if (strcmp(number, input) == 0) {
-                    printf("%s : %s : %s : %s : %s\n", name, number, date, room, type);
+                if (strcmp(numero, input) == 0) {
+                    printf("%s : %s : %s : %s : %s\n", nombre, numero, fecha, habitacion, tipo);
                     check = 1;
                 }
             }
         }
 
         if (check == 0 && version == 0) {
-            printf("Can not find this name !!!\n");
+            printf("Nombre no disponible !!!\n");
         }
         else if (check == 0 && version == 1){
-            printf("Can not find this name !!!\n");
+            printf("Nombre no disponible  !!!\n");
         }
 
 
-        printf("Do you want to search again?(y to search or b to back)");
+        printf("¿Desea realizar otra busqueda?(teclea b para buscar o a para ir atras)");
         getchar();
         scanf("%c", &c);
-        if(c == 'b')
+        if(c == 'a')
             return;
-    }while(c == 'y');
+    }while(c == 'b');
 
 
 }
