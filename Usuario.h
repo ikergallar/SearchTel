@@ -2,7 +2,7 @@
  * User.h
  *
  *  Created on: 28 mar. 2020
- *      Author: alegr
+ *      Author: ikerg
  */
 
 #ifndef USUARIO_H_
