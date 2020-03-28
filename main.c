@@ -9,25 +9,25 @@
 #include "registro.h"
 
 void home(){
-    char* name;
+    char* nombre;
     char c[2];
     int check = 0;
-    printf("|---------- Welcome to booking hotel ----------|\n\n");
+    printf("---------- Bienvenido a SearchTel ----------\n\n");
     do{
-        int command = 0 ;
-        printf("1. Select By Hotel\n");
-        printf("2. Check Booking detail by name\n");
-        printf("3. Check Booking detail by phone number\n");
-        printf("4. Admin menu\n");
-        printf("5. Exit\n");
-        printf("Enter your Command :");
+        int comando = 0 ;
+        printf("1. Seleccionar por hotel\n");
+        printf("2. Buscar Hotel por nombre\n");
+        printf("3. Buscar Hotel por número de teléfono\n");
+        printf("4. Menu Admin\n");
+        printf("5. Salir\n");
+        printf("Introduce tu eleccion: ");
         scanf("%s",&c);
         seek_to_next_line();
-        command = atoi(c);
-        if(command > 5 || command < 0 || strlen(c) > 1){
-            command = 0 ;
+        comando = atoi(c);
+        if(comando > 5 || comando < 0 || strlen(c) > 1){
+        	comando = 0 ;
         }
-        switch (command){
+        switch (comando){
             case 1:
                 printf("\n");hotel();
                 break;
@@ -44,10 +44,10 @@ void home(){
                 printf("\n");check = 1;
                 break;
             default:
-                printf("Invalid command, please input again\n");
+                printf("No se dispone de esa eleccion, por favor, pruebe de nuevo\n");
         }
     }while(check == 0 );
-    printf("Thank you for using program\n");
+    printf("Gracias por confiar en SearchTel\n");
 }
 
 int main() {
