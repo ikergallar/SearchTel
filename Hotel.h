@@ -151,7 +151,7 @@ void booking(char* all_room, char* hotelnombre){
         while (sub != NULL) {
             if (strcmp(sub->room_num, n) == 0 && sub->status == 1) {
                 char cf;
-                printf("¿Esta seguro de querer reservar esta habitacion?(y para confirmar)");
+                printf("¿Esta seguro de querer reservar esta habitacion?(y, para confirmar)");
                 getchar();
                 scanf("%c",&cf);
                 if(cf == 'y'){
