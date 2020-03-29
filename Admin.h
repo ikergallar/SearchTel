@@ -238,6 +238,7 @@ void addHotel(){
         strcat(precio,p);
         fputs(precio,room);
 
+
         int check_digit = 1;
         do {
             char sroom[10], eroom[10];
