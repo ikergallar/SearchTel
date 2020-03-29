@@ -30,46 +30,43 @@ void checkout(char room[10],char nombre[10]){
     char buffer[255];
     char a[20] = "";
     strcat(a,nombre);
-    cuFile = fopen("Customer.txt","r");
+    cuFile = fopen("cliente.txt","r");
     file = fopen("buffer.txt","w");
-    char bnombre[25],bphone[10],bfecha[10],broom[10],btype[30],type[100],droom[10];
-    char bname[25],bphone[10],bfecha[10],broom[10],btype[30],type[100],droom[10];
     char bnombre[25],btelefono[10],bfecha[10],broom[10],btipo[30],tipo[100],droom[10];
     while(fgets(buffer,255,cuFile)){
         fputs(buffer,file);
     }
     fclose(file);
     fclose(cuFile);
-    cuFile = fopen("Customer.txt","w");
+    cuFile = fopen("cliente.txt","w");
     file = fopen("buffer.txt","r");
     fseek(file,-1,SEEK_CUR);
     while(fgets(buffer,255,file)!= NULL){
         char nn[100];
 
-        sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bfecha,broom,btype);
 
 
-        sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bfecha,broom,btype);
-        if(!strcmp(nombre,nn)&& !strcmp(broom,room)){
+
+
 
         sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,btelefono,bfecha,broom,btipo);
         if(!strcmp(nombre,nn)&& !strcmp(broom,room)){
             check = 0;
             strcpy(droom,broom);
-            strcpy(type,btype);
+            strcpy(tipo,btipo);
             continue;
         }
         else{
             char sub[255] = "";
             strcat(sub,nn);
             strcat(sub," : ");
-            strcat(sub,bphone);
+            strcat(sub,btelefono);
             strcat(sub," : ");
             strcat(sub,bfecha);
             strcat(sub," : ");
             strcat(sub,broom);
             strcat(sub," : ");
-            strcat(sub,btype);
+            strcat(sub,btipo);
             strcat(sub,"\n");
             fputs(sub,cuFile);
         }
@@ -81,7 +78,7 @@ void checkout(char room[10],char nombre[10]){
         return;
     }
 
-    cuFile = fopen(strcat(type,".txt"), "r");
+    cuFile = fopen(strcat(tipo,".txt"), "r");
     char n[25];
     char s[25];
     Room *r, *ar;
@@ -93,7 +90,7 @@ void checkout(char room[10],char nombre[10]){
         Room *in = (Room *) malloc(sizeof(Room));
         in->room_num = n_in;
         int st;
-        if(strcmp(s,"Avalible") == 0)
+        if(strcmp(s,"Disponible") == 0)
             st = 1;
         else
             st = 0;
@@ -112,18 +109,18 @@ void checkout(char room[10],char nombre[10]){
     fseek(cuFile, 0, SEEK_SET);
     fclose(cuFile);
 
-    fopen(type, "w");
+    fopen(tipo, "w");
     while (ar != NULL) {
         char buffer[255] = "";
         strcat(buffer, ar->room_num);
         strcat(buffer, " : ");
 
         if (strcmp(ar->room_num, droom) == 0) {
-            strcat(buffer, "Avalible");
+            strcat(buffer, "Disponible");
         }
         else {
             if (ar->status == 1)
-                strcat(buffer, "Avalible");
+                strcat(buffer, "Disponible");
             else
                 strcat(buffer, "Full");
         }
