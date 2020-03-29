@@ -13,7 +13,11 @@
 #include <stdlib.h>
 #include "Usuario.h"
 
+<<<<<<< HEAD
 void informacionHabitacion(char* hotelnombre);
+=======
+void roomDetail(char* hotelnombre);
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
 void hotel();
 
 typedef struct hotel {
@@ -34,7 +38,7 @@ typedef  struct room{
 }Room;
 
 
-void hacerListaHotel(Hotel **lst, char *hotelnombre){
+void makeHotelList(Hotel **lst, char *hotelnombre){
     Hotel* nuevo_Hotel = (Hotel*)malloc(sizeof(Hotel)); ;
     nuevo_Hotel->nombre = hotelnombre;
     nuevo_Hotel->next = NULL;
@@ -52,7 +56,11 @@ void hacerListaHotel(Hotel **lst, char *hotelnombre){
     }
 }
 
+<<<<<<< HEAD
 void hacertipo_listaHabitacion(tipo_habitacion **lst, char *roomnombre, int s){
+=======
+void maketipo_habitacionList(tipo_habitacion **lst, char *roomnombre, int s){
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
     tipo_habitacion* nueva_Habitacion = (tipo_habitacion*)malloc(sizeof(tipo_habitacion)); ;
     nueva_Habitacion->nombre = roomnombre;
     nueva_Habitacion->next = NULL;
@@ -72,7 +80,11 @@ void hacertipo_listaHabitacion(tipo_habitacion **lst, char *roomnombre, int s){
     }
 }
 
+<<<<<<< HEAD
 void hacerListaHabitacion(Room **lst, char *room_num, int s){
+=======
+void makeRoomList(Room **lst, char *room_num, int s){
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
     Room* nueva_Habitacion = (Room*)malloc(sizeof(Room)); ;
     nueva_Habitacion->room_num = room_num;
     nueva_Habitacion->next = NULL;
@@ -130,7 +142,11 @@ void booking(char* all_room, char* hotelnombre){
 
         char *sub_room = (char*)malloc(sizeof(room_number));
         strcpy(sub_room,room_number);
+<<<<<<< HEAD
         hacerListaHabitacion(&room,sub_room,status);
+=======
+        makeRoomList(&room,sub_room,status);
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
     }
 
     char n[10];
@@ -145,7 +161,11 @@ void booking(char* all_room, char* hotelnombre){
             char* hotel = hotelnombre;
             strtok(hotel,"_");
             strcat(hotel,".txt");
+<<<<<<< HEAD
             informacionHabitacion(hotel);
+=======
+            roomDetail(hotel);
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
             return;
         }
         while (sub != NULL) {
@@ -155,7 +175,7 @@ void booking(char* all_room, char* hotelnombre){
                 getchar();
                 scanf("%c",&cf);
                 if(cf == 'y'){
-                    informacion(n,all_room);
+                    information(n,all_room);
                     sub->status = 0;
                 }
                 check = 1;
@@ -204,7 +224,11 @@ void checkStatus(char* room_nombre,int choice,tipo_habitacion **r){
             char* sub = malloc(sizeof(type_nombre));
             strcpy(sub,type_nombre);
             sub = strtok(sub,"\n");
+<<<<<<< HEAD
             hacertipo_listaHabitacion(r, sub, status);
+=======
+            maketipo_habitacionList(r, sub, status);
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
             fclose(room);
             fclose(type);
             return;
@@ -212,13 +236,21 @@ void checkStatus(char* room_nombre,int choice,tipo_habitacion **r){
     }
     printf("\nStatus : Full\n");
     status = 0;
+<<<<<<< HEAD
     hacertipo_listaHabitacion(r, type_nombre, status);
+=======
+    maketipo_habitacionList(r, type_nombre, status);
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
     fclose(room);
     fclose(type);
 }
 
 
+<<<<<<< HEAD
 void informacionHabitacion(char* hotelnombre){
+=======
+void roomDetail(char* hotelnombre){
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
     FILE *roomlst;
     roomlst = fopen(hotelnombre,"r");
     if(roomlst == 0){
@@ -293,7 +325,7 @@ void hotel() {
         char* sub = malloc(sizeof(buffer));
         strcpy(sub,buffer);
         sub = strtok(sub,"\n");
-        hacerListaHotel(&hotel, sub);
+        makeHotelList(&hotel, sub);
         len_hotel++;
     }
 
@@ -323,7 +355,11 @@ void hotel() {
     }
 
     hotelnombre = strcat(hotelnombre,".txt");
+<<<<<<< HEAD
     informacionHabitacion(hotelnombre);
+=======
+    roomDetail(hotelnombre);
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
 
 }
 

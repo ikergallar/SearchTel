@@ -33,10 +33,10 @@ void home(){
                 printf("\n");hotel();
                 break;
             case 2:
-                printf("\n");search(0);
+                printf("\n");busqueda(0);
                 break;
             case 3:
-                printf("\n");search(1);
+                printf("\n");busqueda(1);
                 break;
             case 4:
                 printf("\n");login();  //Username  = Admin , Pass = rootAdmin
