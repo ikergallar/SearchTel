@@ -9,6 +9,7 @@
 #include "registro.h"
 
 void home(){
+
     char* nombre;
     char c[2];
     int check = 0;
@@ -52,8 +53,8 @@ void home(){
 
 int main() {
     home();
-}
 
+}
 
 
 
