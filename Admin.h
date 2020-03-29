@@ -24,15 +24,23 @@ void seek_to_next_line( void )
 }
 
 
-void checkout(char room[10],char nombre[10]){
+void checkout(char room[10],char name[10]){
     FILE *cuFile,*file;
     int check_first = 1,check = 1;
     char buffer[255];
     char a[20] = "";
-    strcat(a,nombre);
+    strcat(a,name);
     cuFile = fopen("Customer.txt","r");
     file = fopen("buffer.txt","w");
+<<<<<<< HEAD
     char bnombre[25],bphone[10],bdate[10],broom[10],btype[30],type[100],droom[10];
+=======
+<<<<<<< HEAD
+    char bname[25],bphone[10],bdate[10],broom[10],btype[30],type[100],droom[10];
+=======
+    char bnombre[25],btelefono[10],bfecha[10],broom[10],btipo[30],tipo[100],droom[10];
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
     while(fgets(buffer,255,cuFile)){
         fputs(buffer,file);
     }
@@ -43,8 +51,17 @@ void checkout(char room[10],char nombre[10]){
     fseek(file,-1,SEEK_CUR);
     while(fgets(buffer,255,file)!= NULL){
         char nn[100];
+<<<<<<< HEAD
         sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bdate,broom,btype);
+=======
+<<<<<<< HEAD
+        sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bdate,broom,btype);
+        if(!strcmp(name,nn)&& !strcmp(broom,room)){
+=======
+        sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,btelefono,bfecha,broom,btipo);
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
         if(!strcmp(nombre,nn)&& !strcmp(broom,room)){
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
             check = 0;
             strcpy(droom,broom);
             strcpy(type,btype);
@@ -68,7 +85,7 @@ void checkout(char room[10],char nombre[10]){
 
     fclose(cuFile);
     if(check){
-        printf("No es posible realizar el check out ,no es posible encontrar tu usuario");
+        printf("Can not check out ,can not find your log");
         return;
     }
 
@@ -84,7 +101,7 @@ void checkout(char room[10],char nombre[10]){
         Room *in = (Room *) malloc(sizeof(Room));
         in->room_num = n_in;
         int st;
-        if(strcmp(s,"Disponible") == 0)
+        if(strcmp(s,"Avalible") == 0)
             st = 1;
         else
             st = 0;
@@ -110,29 +127,29 @@ void checkout(char room[10],char nombre[10]){
         strcat(buffer, " : ");
 
         if (strcmp(ar->room_num, droom) == 0) {
-            strcat(buffer, "Disponible");
+            strcat(buffer, "Avalible");
         }
         else {
             if (ar->status == 1)
-                strcat(buffer, "Disponible");
+                strcat(buffer, "Avalible");
             else
-                strcat(buffer, "Lleno");
+                strcat(buffer, "Full");
         }
         ar = ar->next;
         strcat(buffer, "\n");
         fputs(buffer, cuFile);
     }
     fclose(cuFile);
-    printf("Check Out completado correctamente\n");
+    printf("Check Out Success\n");
 }
 
 
-int check_duplicate(char* filenombre){
+int check_duplicate(char* filename){
     FILE *file;
-    file = fopen("Hotelnombre.txt","r");
-    char buffer[strlen(filenombre)+1];
+    file = fopen("Hotelname.txt","r");
+    char buffer[strlen(filename)+1];
     while (fgets(buffer, sizeof(buffer),file)){
-        if(strcmp(filenombre,buffer) == 0)
+        if(strcmp(filename,buffer) == 0)
             return 0;
     }
     return 1;
@@ -141,21 +158,21 @@ int check_duplicate(char* filenombre){
 void addHotel(){
     int firstdes =1;
     FILE *hotelfile,*room,*hotel;
-    hotelfile = fopen("Hotelnombre.txt","a");
+    hotelfile = fopen("Hotelname.txt","a");
 
-    char hotelnombre[255];
-    printf("Enter Hotelnombre :");
-    scanf("%s", hotelnombre);
+    char hotelname[255];
+    printf("Enter Hotelname :");
+    scanf("%s", hotelname);
     seek_to_next_line();
-    if(check_duplicate(hotelnombre)) {
-        strcat(hotelnombre, "\n");
-        fputs(hotelnombre, hotelfile);
-        strtok(hotelnombre, "\n");
+    if(check_duplicate(hotelname)) {
+        strcat(hotelname, "\n");
+        fputs(hotelname, hotelfile);
+        strtok(hotelname, "\n");
     }
     fclose(hotelfile);
 
-    char *hotel_room = (char*)malloc(sizeof(hotelnombre));
-    hotel_room = hotelnombre;
+    char *hotel_room = (char*)malloc(sizeof(hotelname));
+    hotel_room = hotelname;
     strcat(hotel_room,"_room.txt");
     room = fopen(hotel_room,"a");
     strtok(hotel_room,"_");
@@ -176,20 +193,34 @@ void addHotel(){
         strtok(buffer,".");
         fclose(room);
 
-        strcat(hotelnombre,".txt");
-        hotel = fopen(hotelnombre,"a");
+<<<<<<< HEAD
+        strcat(hotelname,".txt");
+        hotel = fopen(hotelname,"a");
         strcat(roomtype,buffer);
         strcat(roomtype,"\n");
         fputs(roomtype,hotel);
+=======
+        strcat(hotelnombre,".txt");
+        hotel = fopen(hotelnombre,"a");
+<<<<<<< HEAD
+        strcat(roomtype,buffer);
+        strcat(roomtype,"\n");
+        fputs(roomtype,hotel);
+=======
+        strcat(tiporoom,buffer);
+        strcat(tiporoom,"\n");
+        fputs(tiporoom,hotel);
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
 
         int check = 0;
         do {
             char des[50];
             if(firstdes)
-                strcpy(des,"     Descripcion :  ");
+                strcpy(des,"     Description :  ");
             else
                 strcpy(des,"                 :  ");
-            printf("Introduzca una descripcion(1 linea por 1 opcion) : ");
+            printf("Introduzca una describcion(1 linea por 1 opcion) : ");
             scanf("%[^\n]", buffer);
             seek_to_next_line();
 
@@ -197,13 +228,43 @@ void addHotel(){
             strcat(des, buffer);
             fputs(des, hotel);
 
+<<<<<<< HEAD
             char more;
-            printf("Quieres anyadir algo mas a la descripcion? (teclea a para añadir mas):");
+=======
+<<<<<<< HEAD
+            char more;
+            printf("Do you want to add more description? (y to add more):");
             scanf("%c",&more);
+=======
+            char algoMas;
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
+            printf("Quieres anyadir algo mas a la descripcion? (teclea a para añadir mas):");
+<<<<<<< HEAD
+            scanf("%c",&more);
+=======
+            scanf("%c",&algoMas);
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
             seek_to_next_line();
+<<<<<<< HEAD
             printf("Introduciste %c\n",more);
+=======
+<<<<<<< HEAD
+            printf("You entered %c\n",more);
+=======
+            printf("Introduciste %c\n",algoMas);
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
 
+<<<<<<< HEAD
             if(more == 'a') {
+=======
+<<<<<<< HEAD
+            if(more == 'y') {
+=======
+            if(algoMas == 'a') {
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
                 firstdes = 0;
                 check = 1;
             }
@@ -303,17 +364,26 @@ void menuAdmin(){
         scanf("%d", &command);
         if(command == 1)
             addHotel();
+<<<<<<< HEAD
         else if(command == 2) {
+=======
+<<<<<<< HEAD
+        else if(command == 2) {
+            char room[10],name[25];
+=======
+        else if(comando == 2) {
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
             char room[10],nombre[25];
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
             printf("Introduzca la habitacion para realizar el check out: ");
             scanf("%s",room);
             seek_to_next_line();
 
             printf("Introducir el nombre del cliente:");
-            scanf("%s",nombre);
+            scanf("%s",name);
             seek_to_next_line();
 
-            checkout(room,nombre);
+            checkout(room,name);
         }
         else if(command == 3)
             check = 1;
