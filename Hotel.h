@@ -72,7 +72,7 @@ void hacertipo_listaHabitación(tipo_habitacion **lst, char *roomnombre, int s){
     }
 }
 
-void makeRoomList(Room **lst, char *room_num, int s){
+void hacerListaHabitación(Room **lst, char *room_num, int s){
     Room* nueva_Habitacion = (Room*)malloc(sizeof(Room)); ;
     nueva_Habitacion->room_num = room_num;
     nueva_Habitacion->next = NULL;
@@ -130,7 +130,7 @@ void booking(char* all_room, char* hotelnombre){
 
         char *sub_room = (char*)malloc(sizeof(room_number));
         strcpy(sub_room,room_number);
-        makeRoomList(&room,sub_room,status);
+        hacerListaHabitación(&room,sub_room,status);
     }
 
     char n[10];
@@ -155,7 +155,7 @@ void booking(char* all_room, char* hotelnombre){
                 getchar();
                 scanf("%c",&cf);
                 if(cf == 'y'){
-                    information(n,all_room);
+                    informacion(n,all_room);
                     sub->status = 0;
                 }
                 check = 1;
