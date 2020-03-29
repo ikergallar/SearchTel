@@ -41,14 +41,14 @@ void information(char habitacion_numero[10],char tipo_habitacion[50]){
 
 
     FILE *file;
-    file  = fopen("Customer.txt","a");
+    file  = fopen("cliente.txt","a");
     fputs(inf,file);
     fclose(file);
 }
 
-void search(int version){
+void busqueda(int version){
     FILE *file;
-    file  = fopen("Customer.txt","r");
+    file  = fopen("cliente.txt","r");
     char nombre[128],numero[128],fecha[128],input[128],habitacion[128],tipo[128];
     char c;
 
