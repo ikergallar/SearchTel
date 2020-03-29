@@ -32,7 +32,7 @@ void checkout(char room[10],char nombre[10]){
     strcat(a,nombre);
     cuFile = fopen("Customer.txt","r");
     file = fopen("buffer.txt","w");
-    char bnombre[25],bphone[10],bdate[10],broom[10],btype[30],type[100],droom[10];
+    char bnombre[25],btelefono[10],bfecha[10],broom[10],btipo[30],tipo[100],droom[10];
     while(fgets(buffer,255,cuFile)){
         fputs(buffer,file);
     }
@@ -43,24 +43,24 @@ void checkout(char room[10],char nombre[10]){
     fseek(file,-1,SEEK_CUR);
     while(fgets(buffer,255,file)!= NULL){
         char nn[100];
-        sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bdate,broom,btype);
+        sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,btelefono,bfecha,broom,btipo);
         if(!strcmp(nombre,nn)&& !strcmp(broom,room)){
             check = 0;
             strcpy(droom,broom);
-            strcpy(type,btype);
+            strcpy(tipo,btipo);
             continue;
         }
         else{
             char sub[255] = "";
             strcat(sub,nn);
             strcat(sub," : ");
-            strcat(sub,bphone);
+            strcat(sub,btelefono);
             strcat(sub," : ");
-            strcat(sub,bdate);
+            strcat(sub,bfecha);
             strcat(sub," : ");
             strcat(sub,broom);
             strcat(sub," : ");
-            strcat(sub,btype);
+            strcat(sub,btipo);
             strcat(sub,"\n");
             fputs(sub,cuFile);
         }
@@ -72,7 +72,7 @@ void checkout(char room[10],char nombre[10]){
         return;
     }
 
-    cuFile = fopen(strcat(type,".txt"), "r");
+    cuFile = fopen(strcat(tipo,".txt"), "r");
     char n[25];
     char s[25];
     Room *r, *ar;
@@ -103,7 +103,7 @@ void checkout(char room[10],char nombre[10]){
     fseek(cuFile, 0, SEEK_SET);
     fclose(cuFile);
 
-    fopen(type, "w");
+    fopen(tipo, "w");
     while (ar != NULL) {
         char buffer[255] = "";
         strcat(buffer, ar->room_num);
@@ -163,7 +163,7 @@ void addHotel(){
     char moreRoom;
 
     do{
-        char roomtype[] = "Room Type : ";
+        char tiporoom[] = "Tipo de Habitación : ";
         char buffer[255];
         char rt[255] = "";
         printf("Introduzca el tipo de habitacion : ");
@@ -178,9 +178,9 @@ void addHotel(){
 
         strcat(hotelnombre,".txt");
         hotel = fopen(hotelnombre,"a");
-        strcat(roomtype,buffer);
-        strcat(roomtype,"\n");
-        fputs(roomtype,hotel);
+        strcat(tiporoom,buffer);
+        strcat(tiporoom,"\n");
+        fputs(tiporoom,hotel);
 
         int check = 0;
         do {
@@ -197,13 +197,13 @@ void addHotel(){
             strcat(des, buffer);
             fputs(des, hotel);
 
-            char more;
+            char algoMas;
             printf("Quieres anyadir algo mas a la descripcion? (teclea a para añadir mas):");
-            scanf("%c",&more);
+            scanf("%c",&algoMas);
             seek_to_next_line();
-            printf("Introduciste %c\n",more);
+            printf("Introduciste %c\n",algoMas);
 
-            if(more == 'a') {
+            if(algoMas == 'a') {
                 firstdes = 0;
                 check = 1;
             }
@@ -213,46 +213,46 @@ void addHotel(){
             }
         }while (check == 1);
 
-        char people[] = "     People suggest: ";
+        char persona[] = "     People suggest: ";
         char detail[255];
         printf("Introduzca el numero de personas: ");
         scanf("%s",detail);
         seek_to_next_line();
         strcat(detail,"\n");
-        strcat(people,detail);
-        fputs(people,room);
+        strcat(persona,detail);
+        fputs(persona,room);
 
-        char price[] = "     Price: ";
+        char precio[] = "     Precio: ";
         char p[10];
         printf("Introduzca el precio :");
         scanf("%s",p);
         seek_to_next_line();
 
         strcat(p,"\n");
-        strcat(price,p);
-        fputs(price,room);
+        strcat(precio,p);
+        fputs(precio,room);
 
         int check_digit = 1;
         do {
             char sroom[10], eroom[10];
-            printf("Enter strating room number: ");
+            printf("Introduce el primer numero de la habitacion: ");
             scanf("%s", sroom);
             seek_to_next_line();
 
             for(int i =0;i < strlen(sroom);i++){
                 if(!isdigit(sroom[i])){
-                    printf("Invalid Starting room\n");
+                    printf("Prueba otra vez\n");
                     continue;
                 }
             }
 
-            printf("Enter ending room number: ");
+            printf("Introduce el ultimo numero de la habitacion: ");
             scanf("%s", eroom);
             seek_to_next_line();
 
             for(int i =0;i < strlen(eroom);i++){
                 if(!isdigit(sroom[i])){
-                    printf("Invalid Ending room\n");
+                    printf("Prueba otra vez\n");
                     continue;
                 }
             }
@@ -285,7 +285,7 @@ void addHotel(){
         printf("Quiere añadir otro tipo de habitacion(y para añadir): ");
         scanf("%c",&moreRoom);
         seek_to_next_line();
-        printf("You entered %c\n",moreRoom);
+        printf("Has introducido %c\n",moreRoom);
     }while (moreRoom == 'y');
 
     fclose(hotelfile);
@@ -294,16 +294,16 @@ void addHotel(){
 }
 
 void menuAdmin(){
-    int command , check = 0;
+    int comando , check = 0;
     do {
         printf("1.Añadir hotel\n");
         printf("2.Check out\n");
         printf("3.Volver\n");
         printf("Introduzca el numero de comandos :");
-        scanf("%d", &command);
-        if(command == 1)
+        scanf("%d", &comando);
+        if(comando == 1)
             addHotel();
-        else if(command == 2) {
+        else if(comando == 2) {
             char room[10],nombre[25];
             printf("Introduzca la habitacion para realizar el check out: ");
             scanf("%s",room);
@@ -315,7 +315,7 @@ void menuAdmin(){
 
             checkout(room,nombre);
         }
-        else if(command == 3)
+        else if(comando == 3)
             check = 1;
         else
             printf("Comando invalido!!!");
@@ -324,18 +324,18 @@ void menuAdmin(){
 }
 
 void login(){
-    char user[10],pass[10];
+    char usuario[10],contraseña[10];
     int check = 0;
     do {
         printf("Usuario(b para volver): ");
-        scanf("%s", user);
-        if (strcmp(user, "b") == 0)
+        scanf("%s", usuario);
+        if (strcmp(usuario, "b") == 0)
             return;
         printf("Introduzca la contraseña: ");
-        scanf("%s", pass);
-        int check_user = strcmp(user, "Admin"),
-                check_pass = strcmp(pass, "rootAdmin");
-        if (check_user && check_pass) {
+        scanf("%s", contraseña);
+        int check_usuario = strcmp(usuario, "Admin"),
+                check_contraseña = strcmp(contraseña, "rootAdmin");
+        if (check_usuario && check_contraseña) {
             printf("Usuario o contraseña incorrecto\n");
 
         } else {
