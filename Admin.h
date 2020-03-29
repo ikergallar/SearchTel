@@ -32,8 +32,8 @@ void checkout(char room[10],char nombre[10]){
     strcat(a,nombre);
     cuFile = fopen("Customer.txt","r");
     file = fopen("buffer.txt","w");
-    char bnombre[25],bphone[10],bdate[10],broom[10],btype[30],type[100],droom[10];
-    char bname[25],bphone[10],bdate[10],broom[10],btype[30],type[100],droom[10];
+    char bnombre[25],bphone[10],bfecha[10],broom[10],btype[30],type[100],droom[10];
+    char bname[25],bphone[10],bfecha[10],broom[10],btype[30],type[100],droom[10];
     char bnombre[25],btelefono[10],bfecha[10],broom[10],btipo[30],tipo[100],droom[10];
     while(fgets(buffer,255,cuFile)){
         fputs(buffer,file);
@@ -46,10 +46,10 @@ void checkout(char room[10],char nombre[10]){
     while(fgets(buffer,255,file)!= NULL){
         char nn[100];
 
-        sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bdate,broom,btype);
+        sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bfecha,broom,btype);
 
 
-        sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bdate,broom,btype);
+        sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bfecha,broom,btype);
         if(!strcmp(nombre,nn)&& !strcmp(broom,room)){
 
         sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,btelefono,bfecha,broom,btipo);
@@ -65,7 +65,7 @@ void checkout(char room[10],char nombre[10]){
             strcat(sub," : ");
             strcat(sub,bphone);
             strcat(sub," : ");
-            strcat(sub,bdate);
+            strcat(sub,bfecha);
             strcat(sub," : ");
             strcat(sub,broom);
             strcat(sub," : ");
@@ -329,13 +329,9 @@ void menuAdmin(){
         scanf("%d", &command);
         if(command == 1)
             addHotel();
-<<<<<<< HEAD
         else if(command == 2) {
-=======
-<<<<<<< HEAD
         else if(command == 2) {
             char room[10],name[25];
-=======
         else if(comando == 2) {
             char room[10],nombre[25];
             printf("Introduzca la habitacion para realizar el check out: ");
