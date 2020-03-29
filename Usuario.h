@@ -83,12 +83,12 @@ void search(int version){
         }
 
 
-        printf("¿Desea realizar otra busqueda?(teclea b para buscar o a para ir atras)");
+        printf("¿Desea realizar otra busqueda?(teclea a para avanzar o b para volver)");
         getchar();
         scanf("%c", &c);
-        if(c == 'a')
+        if(c == 'b')
             return;
-    }while(c == 'b');
+    }while(c == 'a');
 
 
 }

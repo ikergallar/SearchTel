@@ -102,7 +102,7 @@ void write_file(Room* room,char* filenombre){
         new_room = sub->room_num;
         strcat(new_room," : ");
         if(sub->status == 1){
-            strcat(new_room,"Avalible\n");
+            strcat(new_room,"Disponible\n");
             fputs(new_room,f);
         }
         else if(sub->status == 0){
@@ -123,7 +123,7 @@ void booking(char* all_room, char* hotelnombre){
     while (fscanf(all,"%s : %s",room_number,room_status)!= EOF){
         printf("%s : %s\n",room_number,room_status);
         int status;
-        if(strcmp(room_status,"Avalible") == 0)
+        if(strcmp(room_status,"Disponible") == 0)
             status = 1;
         else
             status = 0;
@@ -138,7 +138,7 @@ void booking(char* all_room, char* hotelnombre){
 
 
     do {
-        printf("Enter the room number that avalible( b to back):");
+        printf("Enter the room number that Disponible( b to back):");
         scanf("%s", n);
         Room *sub = room;
         if(strcmp(n,"b")== 0){
@@ -199,7 +199,7 @@ void checkStatus(char* room_nombre,int choice,tipo_habitacion **r){
     type = fopen(type_nombre,"r");
     while (fscanf(type,"%s : %s",room_number,room_status)!= EOF){
         if(strcmp(room_status,"Full")!= 0){
-            printf("\nStatus : Avalible\n");
+            printf("\nStatus : Disponible\n");
             status = 1;
             char* sub = malloc(sizeof(type_nombre));
             strcpy(sub,type_nombre);

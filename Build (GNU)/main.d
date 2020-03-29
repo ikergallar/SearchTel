@@ -1,3 +1,9 @@
-main.o: ../main.c ../registro.h
+main.o: ../main.c ../Hotel.h ../Usuario.h ../Admin.h ../registro.h
+
+../Hotel.h:
+
+../Usuario.h:
+
+../Admin.h:
 
 ../registro.h:
