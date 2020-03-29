@@ -13,7 +13,7 @@
 #include<string.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "Hotel.h"ç
+#include "Hotel.h"
 
 
 

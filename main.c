@@ -6,7 +6,6 @@
 #include "Hotel.h"
 #include "Admin.h"
 #include "Usuario.h"
-#include "registro.h"
 
 void home(){
 
