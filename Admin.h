@@ -122,7 +122,7 @@ void checkout(char room[10],char nombre[10]){
             if (ar->status == 1)
                 strcat(buffer, "Disponible");
             else
-                strcat(buffer, "Full");
+                strcat(buffer, "Lleno");
         }
         ar = ar->next;
         strcat(buffer, "\n");
@@ -187,24 +187,16 @@ void addHotel(){
         strcat(tiporoom,buffer);
         strcat(tiporoom,"\n");
         fputs(tiporoom,hotel);
-        strcat(hotelnombre,".txt");
-        hotel = fopen(hotelnombre,"a");
-        strcat(tiporoom,buffer);
-        strcat(tiporoom,"\n");
-        fputs(tiporoom,hotel);
-        strcat(tiporoom,buffer);
-        strcat(tiporoom,"\n");
-        fputs(tiporoom,hotel);
 
         int check = 0;
         do {
 
         	char des[50];
             if(firstdes)
-                strcpy(des,"     Description :  ");
+                strcpy(des,"     Descripcion :  ");
             else
                 strcpy(des,"                 :  ");
-            printf("Introduzca una describcion(1 linea por 1 opcion) : ");
+            printf("Introduzca una descripcion(1 linea por 1 opcion) : ");
             scanf("%[^\n]", buffer);
             seek_to_next_line();
 
@@ -212,21 +204,11 @@ void addHotel(){
             strcat(des, buffer);
             fputs(des, hotel);
 
-            char more;
-            char more;
-            printf("Do you want to add more description? (y to add more):");
-            scanf("%c",&more);
             char algoMas;
             printf("Quieres anyadir algo mas a la descripcion? (teclea a para añadir mas):");
-            scanf("%c",&more);
             scanf("%c",&algoMas);
             seek_to_next_line();
-            printf("Introduciste %c\n",more);
-            printf("You entered %c\n",more);
             printf("Introduciste %c\n",algoMas);
-
-            if(more == 'a') {
-            if(more == 'y') {
             if(algoMas == 'a') {
                 firstdes = 0;
                 check = 1;
@@ -237,7 +219,7 @@ void addHotel(){
             }
         }while (check == 1);
 
-        char people[] = "     People suggest: ";
+        char people[] = "     Personas recomendadas: ";
         char detail[255];
         printf("Introduzca el numero de personas: ");
         scanf("%s",detail);
@@ -246,15 +228,15 @@ void addHotel(){
         strcat(people,detail);
         fputs(people,room);
 
-        char price[] = "     Price: ";
+        char precio[] = "     precio: ";
         char p[10];
         printf("Introduzca el precio :");
         scanf("%s",p);
         seek_to_next_line();
 
         strcat(p,"\n");
-        strcat(price,p);
-        fputs(price,room);
+        strcat(precio,p);
+        fputs(precio,room);
 
         int check_digit = 1;
         do {
@@ -318,18 +300,16 @@ void addHotel(){
 }
 
 void menuAdmin(){
-    int command , check = 0;
+    int comando , check = 0;
     do {
         printf("1.Añadir hotel\n");
         printf("2.Check out\n");
         printf("3.Volver\n");
         printf("Introduzca el numero de comandos :");
-        scanf("%d", &command);
-        if(command == 1)
+        scanf("%d", &comando);
+        if(comando == 1)
             addHotel();
-        else if(command == 2) {
-        else if(command == 2) {
-            char room[10],name[25];
+
         else if(comando == 2) {
             char room[10],nombre[25];
             printf("Introduzca la habitacion para realizar el check out: ");
@@ -337,12 +317,12 @@ void menuAdmin(){
             seek_to_next_line();
 
             printf("Introducir el nombre del cliente:");
-            scanf("%s",name);
+            scanf("%s",nombre);
             seek_to_next_line();
 
-            checkout(room,name);
+            checkout(room,nombre);
         }
-        else if(command == 3)
+        else if(comando == 3)
             check = 1;
         else
             printf("Comando invalido!!!");
