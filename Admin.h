@@ -2,7 +2,7 @@
  * Admin.h
  *
  *  Created on: 28 mar. 2020
- *      Author: alegr
+ *      Author: ikerg
  */
 
 #ifndef ADMIN_H_
