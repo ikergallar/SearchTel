@@ -216,7 +216,8 @@ void addHotel(){
 
         int check = 0;
         do {
-            char des[50];
+
+        	char des[50];
             if(firstdes)
                 strcpy(des,"     Description :  ");
             else
