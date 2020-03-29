@@ -155,7 +155,7 @@ void booking(char* all_room, char* hotelnombre){
                 getchar();
                 scanf("%c",&cf);
                 if(cf == 'y'){
-                    information(n,all_room);
+                    informacion(n,all_room);
                     sub->status = 0;
                 }
                 check = 1;
