@@ -24,23 +24,17 @@ void seek_to_next_line( void )
 }
 
 
-void checkout(char room[10],char name[10]){
+void checkout(char room[10],char nombre[10]){
     FILE *cuFile,*file;
     int check_first = 1,check = 1;
     char buffer[255];
     char a[20] = "";
-    strcat(a,name);
+    strcat(a,nombre);
     cuFile = fopen("Customer.txt","r");
     file = fopen("buffer.txt","w");
-<<<<<<< HEAD
     char bnombre[25],bphone[10],bdate[10],broom[10],btype[30],type[100],droom[10];
-=======
-<<<<<<< HEAD
     char bname[25],bphone[10],bdate[10],broom[10],btype[30],type[100],droom[10];
-=======
     char bnombre[25],btelefono[10],bfecha[10],broom[10],btipo[30],tipo[100],droom[10];
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
     while(fgets(buffer,255,cuFile)){
         fputs(buffer,file);
     }
@@ -51,17 +45,15 @@ void checkout(char room[10],char name[10]){
     fseek(file,-1,SEEK_CUR);
     while(fgets(buffer,255,file)!= NULL){
         char nn[100];
-<<<<<<< HEAD
+
         sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bdate,broom,btype);
-=======
-<<<<<<< HEAD
+
+
         sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bdate,broom,btype);
-        if(!strcmp(name,nn)&& !strcmp(broom,room)){
-=======
-        sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,btelefono,bfecha,broom,btipo);
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
         if(!strcmp(nombre,nn)&& !strcmp(broom,room)){
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
+
+        sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,btelefono,bfecha,broom,btipo);
+        if(!strcmp(nombre,nn)&& !strcmp(broom,room)){
             check = 0;
             strcpy(droom,broom);
             strcpy(type,btype);
@@ -160,19 +152,19 @@ void addHotel(){
     FILE *hotelfile,*room,*hotel;
     hotelfile = fopen("Hotelname.txt","a");
 
-    char hotelname[255];
+    char hotelnombre[255];
     printf("Enter Hotelname :");
-    scanf("%s", hotelname);
+    scanf("%s", hotelnombre);
     seek_to_next_line();
-    if(check_duplicate(hotelname)) {
-        strcat(hotelname, "\n");
-        fputs(hotelname, hotelfile);
-        strtok(hotelname, "\n");
+    if(check_duplicate(hotelnombre)) {
+        strcat(hotelnombre, "\n");
+        fputs(hotelnombre, hotelfile);
+        strtok(hotelnombre, "\n");
     }
     fclose(hotelfile);
 
-    char *hotel_room = (char*)malloc(sizeof(hotelname));
-    hotel_room = hotelname;
+    char *hotel_room = (char*)malloc(sizeof(hotelnombre));
+    hotel_room = hotelnombre;
     strcat(hotel_room,"_room.txt");
     room = fopen(hotel_room,"a");
     strtok(hotel_room,"_");
@@ -180,7 +172,7 @@ void addHotel(){
     char moreRoom;
 
     do{
-        char roomtype[] = "Room Type : ";
+        char tiporoom[] = "Room Type : ";
         char buffer[255];
         char rt[255] = "";
         printf("Introduzca el tipo de habitacion : ");
@@ -193,25 +185,19 @@ void addHotel(){
         strtok(buffer,".");
         fclose(room);
 
-<<<<<<< HEAD
-        strcat(hotelname,".txt");
-        hotel = fopen(hotelname,"a");
-        strcat(roomtype,buffer);
-        strcat(roomtype,"\n");
-        fputs(roomtype,hotel);
-=======
         strcat(hotelnombre,".txt");
         hotel = fopen(hotelnombre,"a");
-<<<<<<< HEAD
-        strcat(roomtype,buffer);
-        strcat(roomtype,"\n");
-        fputs(roomtype,hotel);
-=======
         strcat(tiporoom,buffer);
         strcat(tiporoom,"\n");
         fputs(tiporoom,hotel);
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
+        strcat(hotelnombre,".txt");
+        hotel = fopen(hotelnombre,"a");
+        strcat(tiporoom,buffer);
+        strcat(tiporoom,"\n");
+        fputs(tiporoom,hotel);
+        strcat(tiporoom,buffer);
+        strcat(tiporoom,"\n");
+        fputs(tiporoom,hotel);
 
         int check = 0;
         do {
@@ -228,43 +214,22 @@ void addHotel(){
             strcat(des, buffer);
             fputs(des, hotel);
 
-<<<<<<< HEAD
             char more;
-=======
-<<<<<<< HEAD
             char more;
             printf("Do you want to add more description? (y to add more):");
             scanf("%c",&more);
-=======
             char algoMas;
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
             printf("Quieres anyadir algo mas a la descripcion? (teclea a para añadir mas):");
-<<<<<<< HEAD
             scanf("%c",&more);
-=======
             scanf("%c",&algoMas);
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
             seek_to_next_line();
-<<<<<<< HEAD
             printf("Introduciste %c\n",more);
-=======
-<<<<<<< HEAD
             printf("You entered %c\n",more);
-=======
             printf("Introduciste %c\n",algoMas);
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
 
-<<<<<<< HEAD
             if(more == 'a') {
-=======
-<<<<<<< HEAD
             if(more == 'y') {
-=======
             if(algoMas == 'a') {
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
                 firstdes = 0;
                 check = 1;
             }
@@ -372,9 +337,7 @@ void menuAdmin(){
             char room[10],name[25];
 =======
         else if(comando == 2) {
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
             char room[10],nombre[25];
->>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
             printf("Introduzca la habitacion para realizar el check out: ");
             scanf("%s",room);
             seek_to_next_line();
