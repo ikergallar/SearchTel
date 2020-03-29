@@ -75,7 +75,7 @@ void checkout(char room[10],char nombre[10]){
 
     fclose(cuFile);
     if(check){
-        printf("Can not check out ,can not find your log");
+        printf("Error, prueba de nuevo");
         return;
     }
 
@@ -130,7 +130,7 @@ void checkout(char room[10],char nombre[10]){
         fputs(buffer, cuFile);
     }
     fclose(cuFile);
-    printf("Check Out Success\n");
+    printf("El Check Out se ha realizado con exito\n");
 }
 
 
@@ -170,7 +170,7 @@ void addHotel(){
     char moreRoom;
 
     do{
-        char tiporoom[] = "Room Type : ";
+        char tiporoom[] = "Tipo Habitacion: ";
         char buffer[255];
         char rt[255] = "";
         printf("Introduzca el tipo de habitacion : ");
@@ -243,24 +243,24 @@ void addHotel(){
         int check_digit = 1;
         do {
             char sroom[10], eroom[10];
-            printf("Enter strating room number: ");
+            printf("Introdizca el primer numero de la habitacion: ");
             scanf("%s", sroom);
             seek_to_next_line();
 
             for(int i =0;i < strlen(sroom);i++){
                 if(!isdigit(sroom[i])){
-                    printf("Invalid Starting room\n");
+                    printf("Pruebe de nuevo\n");
                     continue;
                 }
             }
 
-            printf("Enter ending room number: ");
+            printf("Introduzca el ultimo numero de la habitacion: ");
             scanf("%s", eroom);
             seek_to_next_line();
 
             for(int i =0;i < strlen(eroom);i++){
                 if(!isdigit(sroom[i])){
-                    printf("Invalid Ending room\n");
+                    printf("Pruebe de nuevo\n");
                     continue;
                 }
             }
@@ -280,7 +280,7 @@ void addHotel(){
                 }
                 else{
                     check_digit = 0;
-                    printf("starting room is less than ending room\n");
+                    printf("\n");
                 }
             }
             else{
@@ -293,7 +293,7 @@ void addHotel(){
         printf("Quiere añadir otro tipo de habitacion(y para añadir): ");
         scanf("%c",&moreRoom);
         seek_to_next_line();
-        printf("You entered %c\n",moreRoom);
+        printf("Has introducido %c\n",moreRoom);
     }while (moreRoom == 'y');
 
     fclose(hotelfile);

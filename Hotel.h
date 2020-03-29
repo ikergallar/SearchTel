@@ -138,7 +138,7 @@ void booking(char* all_room, char* hotelnombre){
 
 
     do {
-        printf("Enter the room number that Disponible( b to back):");
+        printf("Introduce el numero de habitacion( b para volver):");
         scanf("%s", n);
         Room *sub = room;
         if(strcmp(n,"b")== 0){
@@ -180,7 +180,7 @@ void booking(char* all_room, char* hotelnombre){
 
     if(check == 1){
         write_file(room,all_room);
-        printf("Success!!!\n");
+        printf("Habitacion reservada con éxito\n");
     }
 }
 
@@ -210,7 +210,7 @@ void checkStatus(char* room_nombre,int choice,tipo_habitacion **r){
             return;
         }
     }
-    printf("\nStatus : Full\n");
+    printf("\nStatus : Lleno\n");
     status = 0;
     hacertipo_listaHabitacion(r, type_nombre, status);
     fclose(room);
@@ -233,7 +233,7 @@ void informacionHabitacion(char* hotelnombre){
     int order = 1;
     int number = 0;
 
-    printf("-------Room Detail---------\n");
+    printf("-------Detalles de Habitacion---------\n");
     while (fgets(buffer, sizeof(buffer),roomlst)){
         if(strcmp(buffer,"\n") == 0){
             checkStatus(n,order,&roomLink);
