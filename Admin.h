@@ -318,7 +318,7 @@ void menuAdmin(){
         else if(command == 3)
             check = 1;
         else
-            printf("Comnado invalido!!!");
+            printf("Comando invalido!!!");
     }while(check == 0);
 
 }
