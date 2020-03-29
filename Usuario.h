@@ -13,7 +13,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void information(char habitacion_numero[10],char tipo_habitacion[50]){
+void informacion(char habitacion_numero[10],char tipo_habitacion[50]){
     char nombre[128],numero[128],fecha[128];
 
     printf("Introduce tu nombre:");
@@ -40,14 +40,14 @@ void information(char habitacion_numero[10],char tipo_habitacion[50]){
 
 
     FILE *file;
-    file  = fopen("Customer.txt","a");
+    file  = fopen("cliente.txt","a");
     fputs(inf,file);
     fclose(file);
 }
 
-void search(int version){
+void buscar(int version){
     FILE *file;
-    file  = fopen("Customer.txt","r");
+    file  = fopen("cliente.txt","r");
     char nombre[128],numero[128],fecha[128],input[128],habitacion[128],tipo[128];
     char c;
 
