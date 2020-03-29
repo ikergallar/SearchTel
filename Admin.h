@@ -24,15 +24,15 @@ void seek_to_next_line( void )
 }
 
 
-void checkout(char room[10],char name[10]){
+void checkout(char room[10],char nombre[10]){
     FILE *cuFile,*file;
     int check_first = 1,check = 1;
     char buffer[255];
     char a[20] = "";
-    strcat(a,name);
+    strcat(a,nombre);
     cuFile = fopen("Customer.txt","r");
     file = fopen("buffer.txt","w");
-    char bname[25],bphone[10],bdate[10],broom[10],btype[30],type[100],droom[10];
+    char bnombre[25],bphone[10],bdate[10],broom[10],btype[30],type[100],droom[10];
     while(fgets(buffer,255,cuFile)){
         fputs(buffer,file);
     }
@@ -44,7 +44,7 @@ void checkout(char room[10],char name[10]){
     while(fgets(buffer,255,file)!= NULL){
         char nn[100];
         sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bdate,broom,btype);
-        if(!strcmp(name,nn)&& !strcmp(broom,room)){
+        if(!strcmp(nombre,nn)&& !strcmp(broom,room)){
             check = 0;
             strcpy(droom,broom);
             strcpy(type,btype);
@@ -68,7 +68,7 @@ void checkout(char room[10],char name[10]){
 
     fclose(cuFile);
     if(check){
-        printf("Can not check out ,can not find your log");
+        printf("No es posible realizar el check out ,no es posible encontrar tu usuario");
         return;
     }
 
@@ -84,7 +84,7 @@ void checkout(char room[10],char name[10]){
         Room *in = (Room *) malloc(sizeof(Room));
         in->room_num = n_in;
         int st;
-        if(strcmp(s,"Avalible") == 0)
+        if(strcmp(s,"Disponible") == 0)
             st = 1;
         else
             st = 0;
@@ -110,29 +110,29 @@ void checkout(char room[10],char name[10]){
         strcat(buffer, " : ");
 
         if (strcmp(ar->room_num, droom) == 0) {
-            strcat(buffer, "Avalible");
+            strcat(buffer, "Disponible");
         }
         else {
             if (ar->status == 1)
-                strcat(buffer, "Avalible");
+                strcat(buffer, "Disponible");
             else
-                strcat(buffer, "Full");
+                strcat(buffer, "Lleno");
         }
         ar = ar->next;
         strcat(buffer, "\n");
         fputs(buffer, cuFile);
     }
     fclose(cuFile);
-    printf("Check Out Success\n");
+    printf("Check Out completado correctamente\n");
 }
 
 
-int check_duplicate(char* filename){
+int check_duplicate(char* filenombre){
     FILE *file;
-    file = fopen("Hotelname.txt","r");
-    char buffer[strlen(filename)+1];
+    file = fopen("Hotelnombre.txt","r");
+    char buffer[strlen(filenombre)+1];
     while (fgets(buffer, sizeof(buffer),file)){
-        if(strcmp(filename,buffer) == 0)
+        if(strcmp(filenombre,buffer) == 0)
             return 0;
     }
     return 1;
@@ -141,21 +141,21 @@ int check_duplicate(char* filename){
 void addHotel(){
     int firstdes =1;
     FILE *hotelfile,*room,*hotel;
-    hotelfile = fopen("Hotelname.txt","a");
+    hotelfile = fopen("Hotelnombre.txt","a");
 
-    char hotelname[255];
-    printf("Enter Hotelname :");
-    scanf("%s", hotelname);
+    char hotelnombre[255];
+    printf("Enter Hotelnombre :");
+    scanf("%s", hotelnombre);
     seek_to_next_line();
-    if(check_duplicate(hotelname)) {
-        strcat(hotelname, "\n");
-        fputs(hotelname, hotelfile);
-        strtok(hotelname, "\n");
+    if(check_duplicate(hotelnombre)) {
+        strcat(hotelnombre, "\n");
+        fputs(hotelnombre, hotelfile);
+        strtok(hotelnombre, "\n");
     }
     fclose(hotelfile);
 
-    char *hotel_room = (char*)malloc(sizeof(hotelname));
-    hotel_room = hotelname;
+    char *hotel_room = (char*)malloc(sizeof(hotelnombre));
+    hotel_room = hotelnombre;
     strcat(hotel_room,"_room.txt");
     room = fopen(hotel_room,"a");
     strtok(hotel_room,"_");
@@ -176,8 +176,8 @@ void addHotel(){
         strtok(buffer,".");
         fclose(room);
 
-        strcat(hotelname,".txt");
-        hotel = fopen(hotelname,"a");
+        strcat(hotelnombre,".txt");
+        hotel = fopen(hotelnombre,"a");
         strcat(roomtype,buffer);
         strcat(roomtype,"\n");
         fputs(roomtype,hotel);
@@ -186,10 +186,10 @@ void addHotel(){
         do {
             char des[50];
             if(firstdes)
-                strcpy(des,"     Description :  ");
+                strcpy(des,"     Descripcion :  ");
             else
                 strcpy(des,"                 :  ");
-            printf("Introduzca una describcion(1 linea por 1 opcion) : ");
+            printf("Introduzca una descripcion(1 linea por 1 opcion) : ");
             scanf("%[^\n]", buffer);
             seek_to_next_line();
 
@@ -198,12 +198,12 @@ void addHotel(){
             fputs(des, hotel);
 
             char more;
-            printf("Do you want to add more description? (y to add more):");
+            printf("Quieres anyadir algo mas a la descripcion? (teclea a para añadir mas):");
             scanf("%c",&more);
             seek_to_next_line();
-            printf("You entered %c\n",more);
+            printf("Introduciste %c\n",more);
 
-            if(more == 'y') {
+            if(more == 'a') {
                 firstdes = 0;
                 check = 1;
             }
@@ -304,16 +304,16 @@ void menuAdmin(){
         if(command == 1)
             addHotel();
         else if(command == 2) {
-            char room[10],name[25];
+            char room[10],nombre[25];
             printf("Introduzca la habitacion para realizar el check out: ");
             scanf("%s",room);
             seek_to_next_line();
 
             printf("Introducir el nombre del cliente:");
-            scanf("%s",name);
+            scanf("%s",nombre);
             seek_to_next_line();
 
-            checkout(room,name);
+            checkout(room,nombre);
         }
         else if(command == 3)
             check = 1;
