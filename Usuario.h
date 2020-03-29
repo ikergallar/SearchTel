@@ -13,6 +13,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+
 void information(char habitacion_numero[10],char tipo_habitacion[50]){
     char nombre[128],numero[128],fecha[128];
 
