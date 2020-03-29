@@ -33,8 +33,13 @@ void checkout(char room[10],char name[10]){
     cuFile = fopen("Customer.txt","r");
     file = fopen("buffer.txt","w");
 <<<<<<< HEAD
+<<<<<<< HEAD
     char bname[25],bphone[10],bdate[10],broom[10],btype[30],type[100],droom[10];
 =======
+=======
+    char bnombre[25],bphone[10],bfecha[10],broom[10],btype[30],type[100],droom[10];
+    char bname[25],bphone[10],bfecha[10],broom[10],btype[30],type[100],droom[10];
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
     char bnombre[25],btelefono[10],bfecha[10],broom[10],btipo[30],tipo[100],droom[10];
 >>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
     while(fgets(buffer,255,cuFile)){
@@ -48,9 +53,19 @@ void checkout(char room[10],char name[10]){
     while(fgets(buffer,255,file)!= NULL){
         char nn[100];
 <<<<<<< HEAD
+<<<<<<< HEAD
         sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bdate,broom,btype);
         if(!strcmp(name,nn)&& !strcmp(broom,room)){
 =======
+=======
+
+        sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bfecha,broom,btype);
+
+
+        sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,bphone,bfecha,broom,btype);
+        if(!strcmp(nombre,nn)&& !strcmp(broom,room)){
+
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
         sscanf(buffer,"%s : %s : %s : %s : %[^\n]",nn,btelefono,bfecha,broom,btipo);
         if(!strcmp(nombre,nn)&& !strcmp(broom,room)){
 >>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
@@ -334,10 +349,12 @@ void menuAdmin(){
         scanf("%d", &comando);
         if(comando == 1)
             addHotel();
-<<<<<<< HEAD
         else if(command == 2) {
-            char room[10],name[25];
+<<<<<<< HEAD
 =======
+        else if(command == 2) {
+>>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
+            char room[10],name[25];
         else if(comando == 2) {
             char room[10],nombre[25];
 >>>>>>> branch 'master' of https://github.com/ikergallar/SearchTel.git
