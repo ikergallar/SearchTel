@@ -103,6 +103,7 @@ void checkout(char room[10],char name[10]){
         return;
     }
 
+
     cuFile = fopen(strcat(tipo,".txt"), "r");
     char n[25];
     char s[25];
